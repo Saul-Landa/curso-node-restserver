@@ -2,38 +2,45 @@ const express = require('express');
 const cors = require('cors');
 
 class Server {
+
     constructor() {
-        this.app = express();
-        this.port = process.env.port || 3000;
-        this.usuarioPath = '/api/usuarios';
+        this.app  = express();
+        this.port = process.env.PORT;
+        this.usuariosPath = '/api/usuarios';
 
         // Middlewares
         this.middlewares();
 
-        // Rutas de la app
+        // Rutas de mi aplicación
         this.routes();
     }
 
     middlewares() {
+
         // CORS
         this.app.use( cors() );
 
-        // Lectura y parseo de body
+        // Lectura y parseo del body
         this.app.use( express.json() );
 
-        // Directorio publico.
+        // Directorio Público
         this.app.use( express.static('public') );
+
     }
 
     routes() {
-        this.app.use(this.usuarioPath, require('../routes/usuarios'));
+        this.app.use( this.usuariosPath, require('../routes/usuarios'));
     }
 
     listen() {
         this.app.listen( this.port, () => {
-            console.log(`Example app listening on port ${this.port}`)
-        })
+            console.log('Servidor corriendo en puerto', this.port );
+        });
     }
+
 }
+
+
+
 
 module.exports = Server;

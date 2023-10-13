@@ -1,3 +1,3 @@
-# WebSer + RestServer
+# WebServer + RestServer
 
-Recuerden que deben ejecutar ```npm install``` para recontruir los módulo de Node.
+Recuerden que deben de ejecutar ```npm install``` para reconstruir los módulos de Node.
